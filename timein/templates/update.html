@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+<div class="box2 col-md-6 mx-auto">
+    <div id="back1">
+        <a type="button" class="btn btn-success btn-md" href="{% url 'user_detail' student.pk %}">Back</a>
+    </div>
+    <h1 style="margin-top:19px;margin-left:20px;" class="display-4">Update Detail</h1>
+    <form method="POST" class="form-signin">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-label-group  has-float-label col-md-12">
+                {{ form.ID_number }}
+                <label for="id">ID number</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-12">
+                {{ form.first_name }}
+                <label for="fname">First name</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-12">
+                {{ form.last_name }}
+                <label for="lname">Last Name</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-8">
+                {{ form.course }}
+                <label for="course">Course</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-8">
+                {{ form.purpose }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-6">
+                {{ form.pc }}
+                <label for="pc">PC number</label>
+            </div>
+            <div class="col-md-12 mx-auto">
+                <button type="submit" class="btn btn-light bg-success btn-block text-white">update</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

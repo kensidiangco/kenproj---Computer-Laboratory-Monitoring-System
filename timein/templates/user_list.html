@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+       
+{% block content %}
+  {% if user.is_authenticated %}
+    <main class="row">
+        <div class="col-md-2"><a type="button" class="btn btn-success btn-block btn-md" href="#myModal"><i class="fa fa-plus"></i> Login</a></div>
+    </main><br>
+  {% endif %}
+    <div id="srch" class="input-group col-md-6">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Month filter</span>
+        </div>
+        <input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for months..">
+    </div>
+<br>
+    <table id="myTable" class="table table-striped table-hovered text-center">
+        <thead>
+            <tr>
+                <th scope="col">Date / Time in</th>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Course</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">PC</th>
+                <th scope="col">Timeout</h1></th>
+                <th scope="col">Detail</th>
+            </tr>
+    </thead>
+        <tbody>
+            {% for student in students reversed %}
+            <tr>
+                <td>{{ student.dtin }}</td>      
+                <td>{{ student.ID_number }}</td>              
+                <td>{{student.last_name }}, {{ student.first_name }}</td>              
+                <td>{{ student.course }}</td>
+                <td>{{ student.purpose }}</td>
+                <td>{{ student.pc }}</td>
+                <td>{% with student.timeout as p %}
+                {% if p == None %}
+                    --:--:--
+                {% else %}
+                    {{ student.out }}
+                {% endif %}
+            {% endwith %}</td>
+                <td><a type="button" class="btn btn-success" href="{% url 'user_detail' pk=student.pk %}">View <i class="fa fa-id-card-o"></i></a></td>
+            </tr>
+            {% endfor %}            
+        </tbody>
+    </table>
+<div id="myModal" class="QModal">
+    <div class="popup_modal ">
+      <div>
+        <a href="#close" title="Close" class="close">X</a>
+        <h3 class="display-4">Login</h3>
+      </div>
+      <form method="POST" class="form-signin">
+            {% csrf_token %}
+			<div class="form-row">
+				<div class="form-label-group  has-float-label col-md-12">
+            {{ form.ID_number }} 
+               <label for="id">ID number</label>
+                </div>        
+            </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-12">
+                {{ form.first_name }}
+                <label for="fname">First name</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-12">
+              {{ form.last_name }}
+                <label for="lname">Last Name</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-8">
+                {{ form.course }}
+               <label for="course">Course</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-8">
+                 {{ form.purpose }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label-group col-md-6">
+                {{ form.pc }}
+                <label for="pc">PC number</label>
+            </div>
+        </div>
+            <div class="form-row">
+                <div class="col-md-12 mx-auto"><br>
+                    <button type="submit" class="btn btn-light bg-success btn-block text-white">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

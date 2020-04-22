@@ -1,0 +1,35 @@
+.QModal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 300ms;
+  visibility: hidden;
+  opacity: 1;
+}
+.QModal:target {
+  visibility: visible;
+  opacity: 1;
+  backdrop-filter: blur(3px);
+  position: fixed;
+}
+.popup_modal {
+  top: 6%;
+  position: relative;
+  margin: 70px auto;
+  padding: 20px;
+  background: white;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 33%;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.popup_modal .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.8rem;
+  color: red;
+}

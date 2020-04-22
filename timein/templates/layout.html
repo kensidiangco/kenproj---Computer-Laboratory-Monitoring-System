@@ -1,0 +1,53 @@
+{% load static %}
+<DOCTYPE! HTML>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+        <link rel="stylesheet" href="{% static 'css/float_label.css' %}">
+        <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Computer Laboratory Monitoring System</title>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+            <a href="{% url 'user_list' %}" class="navbar-brand text-white"> <img width="50px" src="{% static 'img/sjc.png' %}" alt="sjc"></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"> <span class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="{% url 'user_form' %}" class="nav-item nav-link disabled">Login</a>
+                    <a href="#" class="nav-item nav-link disabled" tabindex="-1">About Us</a>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a href="{% url 'admin:index' %}" class="nav-item nav-link text-white"><i style="font-size:16px" class="fa fa-user-circle-o"> Admin Site</i></a>
+                </div>
+            </div>
+        </nav>
+        <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="pt-3 pb-4 mt-1 mb-2 border-bottom">
+            <div class="container container-fluid">
+                <h1 class="display-4">Computer Laboratory Monitoring</h1>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <footer>
+            <div class="container">
+                <p class="lead text-white text-center">
+                    © 2020 Copyright: BSIT-1B GROUP-5 RIGHT-ROW <img width="5%" src="{% static 'img/ken.png' %}" alt="keneth"><br>PHINMA SAINT JUDE COLLEGE
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{% static 'js/search.js' %}"></script>
+    </body>
+</html>
